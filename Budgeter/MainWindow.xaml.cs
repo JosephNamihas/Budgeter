@@ -38,6 +38,8 @@ namespace Budgeter
         {
             int userVal = int.Parse(IncomeAmount.Text);
             ListBoxIncome.Items.Add(new Income(IncomeName.Text, userVal));
+            // Run function to recalculate all IncomeAmounts in Income Class
+            
           
         }
 

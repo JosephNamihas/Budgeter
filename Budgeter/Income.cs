@@ -11,6 +11,11 @@ namespace Budgeter
         public string Name { get; set; }
         public int IncomeAmount { get; set; }
 
+        int IncomeTotal()
+        {
+            // Return total of all objects IncomeAmount
+        }
+
         public Income(string _name, int _amount)
         {
             Name = _name;
