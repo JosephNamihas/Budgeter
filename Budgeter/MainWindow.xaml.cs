@@ -24,9 +24,6 @@ namespace Budgeter
 
         };
         
-
-      
-
         public MainWindow()
         {
             InitializeComponent();
@@ -36,13 +33,37 @@ namespace Budgeter
 
         private void IncomeButton_Click(object sender, RoutedEventArgs e)
         {
-            int userVal = int.Parse(IncomeAmount.Text);
-            ListBoxIncome.Items.Add(new Income(IncomeName.Text, userVal));
+            double userVal = 0;
+
+           try
+            {
+                userVal = double.Parse(IncomeAmount.Text);
+            } catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+            
+            ListBoxIncome.Items.Add(new Income(IncomeName.Text, ((int)userVal)));
             // Run function to recalculate all IncomeAmounts in Income Class
             
-          
         }
 
-        
+        private void ExpenditureButton_Click(object sender, RoutedEventArgs e)
+        {
+            double expenVal = 0;
+
+            try
+            {
+                expenVal = double.Parse(ExpenditureAmount.Text);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+
+            ListBoxExpenditure.Items.Add(new Expenditure(ExpenditureName.Text, ((int)expenVal)));
+            // Run function to recalculate all IncomeAmounts in Income Class
+
+        }
     }
 }

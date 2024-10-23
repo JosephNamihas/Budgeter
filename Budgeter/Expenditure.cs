@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace Budgeter
 {
-    public class Income
+    public class Expenditure
     {
         public string Name { get; set; }
-        public int IncomeAmount { get; set; }
+        public int ExpenditureAmount { get; set; }
 
+        /*int IncomeTotal()
+        {
+            // Return total of all objects IncomeAmount
+        }*/
 
-        public Income(string _name, int _amount)
+        public Expenditure(string _name, int _amount)
         {
             Name = _name;
-            IncomeAmount = _amount;
+            ExpenditureAmount = _amount;
         }
 
         // Function for Total Amount

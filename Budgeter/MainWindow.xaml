@@ -26,10 +26,11 @@
         <TextBox x:Name="IncomeName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" Width="100"/>
         <TextBox x:Name="IncomeAmount" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" />
         <Button Click="IncomeButton_Click" Grid.Column="1" Grid.Row="1" Content="Add Income" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" />
+        <Button Grid.Column="1" Grid.Row="1" Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
 
-        <TextBox Grid.Column="1" Grid.Row="2" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" />
-        <TextBox Grid.Column="1" Grid.Row="2" Text="Expenditure" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" />
-        <Button Grid.Column="1" Grid.Row="2" Content="Add Expenditure" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
+        <TextBox x:Name="ExpenditureName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" Width="100" />
+        <TextBox x:Name ="ExpenditureAmount" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="50" />
+        <Button Click="ExpenditureButton_Click" Grid.Column="1" Grid.Row="2" Content="Add Expenditure" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
 
         <ListBox x:Name="ListBoxIncome" Grid.Column="2" Grid.Row="1">
             <ListBox.ItemTemplate>
@@ -37,6 +38,17 @@
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" />
                         <TextBlock Text="{Binding IncomeAmount}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="ListBoxExpenditure" Grid.Column="2" Grid.Row="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding ExpenditureAmount}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
