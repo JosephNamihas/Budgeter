@@ -54,7 +54,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <TextBlock x:Name="TotalIncome" Grid.Column="2" Grid.Row="3" />
+        <TextBlock x:Name="TotalExpenditure" Grid.Column="2" Grid.Row="3" Text="Total Expenditure: " Width="200" />
 
     </Grid>
 </Window>

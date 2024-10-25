@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,7 +19,7 @@ namespace Budgeter
     public partial class MainWindow : Window
     {
 
-        public List<Income> IncomingFunds = new List<Income>()
+        public List<int> IncomingFunds = new List<int>()
         {
             
 
@@ -27,6 +28,9 @@ namespace Budgeter
         public MainWindow()
         {
             InitializeComponent();
+
+
+
 
             //ListBoxIncome.ItemsSource = IncomingFunds;
         }
@@ -50,20 +54,34 @@ namespace Budgeter
 
         private void ExpenditureButton_Click(object sender, RoutedEventArgs e)
         {
-            double expenVal = 0;
+            int expenVal = 0;
+            string expenditureName = ExpenditureName.Text;
+            int expenAmount = 0;
 
             try
             {
-                expenVal = double.Parse(ExpenditureAmount.Text);
+                expenVal = int.Parse(ExpenditureAmount.Text);
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
             }
 
-            ListBoxExpenditure.Items.Add(new Expenditure(ExpenditureName.Text, ((int)expenVal)));
+            ListBoxExpenditure.Items.Add(new Expenditure(expenditureName, ((int)expenVal)));
             // Run function to recalculate all IncomeAmounts in Income Class
 
+            IncomingFunds.Add(expenVal);
+
+            int total = 0;
+
+            foreach (int item in IncomingFunds)
+            {
+                total += item;
+            }
+
+            TotalExpenditure.Text = total.ToString();
+
         }
+
     }
 }
