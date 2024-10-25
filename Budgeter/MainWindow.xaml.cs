@@ -24,32 +24,46 @@ namespace Budgeter
             
 
         };
-        
+
+        public List<int> OutgoingFunds = new List<int>()
+        {
+
+
+        };
+
         public MainWindow()
         {
             InitializeComponent();
 
-
-
-
-            //ListBoxIncome.ItemsSource = IncomingFunds;
         }
 
         private void IncomeButton_Click(object sender, RoutedEventArgs e)
         {
-            double userVal = 0;
+            string incomeItem = IncomeName.Text;
+            int incomeVal = 0;
 
-           try
+            try
             {
-                userVal = double.Parse(IncomeAmount.Text);
+                incomeVal = int.Parse(IncomeAmount.Text);
             } catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
             }
             
-            ListBoxIncome.Items.Add(new Income(IncomeName.Text, ((int)userVal)));
+            ListBoxIncome.Items.Add(new Income(incomeItem, ((int)incomeVal)));
             // Run function to recalculate all IncomeAmounts in Income Class
-            
+
+            IncomingFunds.Add(incomeVal);
+
+            int total = 0;
+
+            foreach (int item in IncomingFunds)
+            {
+                total += item;
+            }
+
+            TotalIncome.Text = total.ToString();
+
         }
 
         private void ExpenditureButton_Click(object sender, RoutedEventArgs e)
@@ -70,17 +84,23 @@ namespace Budgeter
             ListBoxExpenditure.Items.Add(new Expenditure(expenditureName, ((int)expenVal)));
             // Run function to recalculate all IncomeAmounts in Income Class
 
-            IncomingFunds.Add(expenVal);
+            OutgoingFunds.Add(expenVal);
 
             int total = 0;
 
-            foreach (int item in IncomingFunds)
+            foreach (int item in OutgoingFunds)
             {
                 total += item;
             }
 
             TotalExpenditure.Text = total.ToString();
 
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            IncomingFunds.Clear();
+            OutgoingFunds.Clear();
         }
 
     }
