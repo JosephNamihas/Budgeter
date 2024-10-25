@@ -35,6 +35,7 @@ namespace Budgeter
         {
             InitializeComponent();
 
+
         }
 
         private void IncomeButton_Click(object sender, RoutedEventArgs e)
@@ -55,14 +56,14 @@ namespace Budgeter
 
             IncomingFunds.Add(incomeVal);
 
-            int total = 0;
+            int incomeTotal = 0;
 
             foreach (int item in IncomingFunds)
             {
-                total += item;
+                incomeTotal += item;
             }
 
-            TotalIncome.Text = total.ToString();
+            TotalIncome.Text = incomeTotal.ToString();
 
         }
 
@@ -70,7 +71,7 @@ namespace Budgeter
         {
             int expenVal = 0;
             string expenditureName = ExpenditureName.Text;
-            int expenAmount = 0;
+
 
             try
             {
@@ -86,14 +87,14 @@ namespace Budgeter
 
             OutgoingFunds.Add(expenVal);
 
-            int total = 0;
+            int expenTotal = 0;
 
             foreach (int item in OutgoingFunds)
             {
-                total += item;
+                expenTotal += item;
             }
 
-            TotalExpenditure.Text = total.ToString();
+            TotalExpenditure.Text = expenTotal.ToString();
 
         }
 
