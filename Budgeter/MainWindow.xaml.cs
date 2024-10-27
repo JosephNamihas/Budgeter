@@ -42,10 +42,7 @@ namespace Budgeter
                 Console.WriteLine(exception.Message);
             }
             
-            ListBoxIncome.Items.Add(new Income(incomeItem, ((int)incomeVal)));
-            // Run function to recalculate all IncomeAmounts in Income Class
-
-            IncomingFunds.Add(incomeVal);
+            AddToList_Income(incomeItem, incomeVal);
 
             foreach (int item in IncomingFunds)
             {
@@ -73,10 +70,7 @@ namespace Budgeter
                 Console.WriteLine(exception.Message);
             }
 
-            ListBoxExpenditure.Items.Add(new Expenditure(expenditureItem, ((int)expenVal)));
-            // Run function to recalculate all IncomeAmounts in Income Class
-
-            OutgoingFunds.Add(expenVal);
+            AddToList_Expenditure(expenditureItem, expenVal);
 
             foreach (int item in OutgoingFunds)
             {
@@ -89,10 +83,20 @@ namespace Budgeter
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            // Clear item values
 
+        }
 
+        void AddToList_Income(string itemName, int itemValue)
+        {
+            ListBoxIncome.Items.Add(new Expenditure(itemName, ((int)itemValue)));
+            IncomingFunds.Add(itemValue);
+            // Run function to recalculate all Expenditures in Class
+        }
+
+        void AddToList_Expenditure(string itemName, int itemValue)
+        {
+            ListBoxExpenditure.Items.Add(new Expenditure(itemName, ((int)itemValue)));
+            OutgoingFunds.Add(itemValue);
         }
 
 
