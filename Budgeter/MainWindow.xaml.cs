@@ -19,29 +19,20 @@ namespace Budgeter
     public partial class MainWindow : Window
     {
 
-        public List<int> IncomingFunds = new List<int>()
-        {
-            
-
-        };
-
-        public List<int> OutgoingFunds = new List<int>()
-        {
-
-
-        };
+        public List<int> IncomingFunds = new List<int>() { }; // For calculating grand totals
+        public List<int> OutgoingFunds = new List<int>() { };
 
         public MainWindow()
         {
             InitializeComponent();
 
-
         }
 
         private void IncomeButton_Click(object sender, RoutedEventArgs e)
         {
-            string incomeItem = IncomeName.Text;
-            int incomeVal = 0;
+            string incomeItem = IncomeName.Text; // The UI Element
+            int incomeVal = 0; // The value, the user inputs in IncomeAmount.Text
+            int incomeTotal = 0; // The sum of the income
 
             try
             {
@@ -56,8 +47,6 @@ namespace Budgeter
 
             IncomingFunds.Add(incomeVal);
 
-            int incomeTotal = 0;
-
             foreach (int item in IncomingFunds)
             {
                 incomeTotal += item;
@@ -69,8 +58,10 @@ namespace Budgeter
 
         private void ExpenditureButton_Click(object sender, RoutedEventArgs e)
         {
-            int expenVal = 0;
-            string expenditureName = ExpenditureName.Text;
+            
+            string expenditureItem = ExpenditureName.Text; // The UI element
+            int expenVal = 0; // The value, the user inputs in ExpenditureAmount.Text
+            int expenTotal = 0; // The sum of the expenditures
 
 
             try
@@ -82,12 +73,10 @@ namespace Budgeter
                 Console.WriteLine(exception.Message);
             }
 
-            ListBoxExpenditure.Items.Add(new Expenditure(expenditureName, ((int)expenVal)));
+            ListBoxExpenditure.Items.Add(new Expenditure(expenditureItem, ((int)expenVal)));
             // Run function to recalculate all IncomeAmounts in Income Class
 
             OutgoingFunds.Add(expenVal);
-
-            int expenTotal = 0;
 
             foreach (int item in OutgoingFunds)
             {
@@ -100,9 +89,14 @@ namespace Budgeter
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            IncomingFunds.Clear();
-            OutgoingFunds.Clear();
+            
+            // Clear item values
+
+
         }
+
+
+
 
     }
 }
