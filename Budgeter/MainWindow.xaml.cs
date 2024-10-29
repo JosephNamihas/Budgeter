@@ -21,11 +21,12 @@ namespace Budgeter
 
         public List<int> IncomingFunds = new List<int>() { }; // For calculating grand totals
         public List<int> OutgoingFunds = new List<int>() { };
+        int grandTotal = 0;
+
 
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void IncomeButton_Click(object sender, RoutedEventArgs e)
@@ -47,9 +48,12 @@ namespace Budgeter
             foreach (int item in IncomingFunds)
             {
                 incomeTotal += item;
+                grandTotal += item;
+                
             }
 
             TotalIncome.Text = incomeTotal.ToString();
+            Calculate_GrandTotal(grandTotal);
 
         }
 
@@ -74,21 +78,25 @@ namespace Budgeter
 
             foreach (int item in OutgoingFunds)
             {
+
                 expenTotal += item;
+                grandTotal -= item;
             }
 
             TotalExpenditure.Text = expenTotal.ToString();
-
+            Calculate_GrandTotal(grandTotal);
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
+           
 
         }
+         // -------------------------------------------------- METHODS ------------------------------------------- //
 
         void AddToList_Income(string itemName, int itemValue)
         {
-            ListBoxIncome.Items.Add(new Expenditure(itemName, ((int)itemValue)));
+            ListBoxIncome.Items.Add(new Income(itemName, ((int)itemValue)));
             IncomingFunds.Add(itemValue);
             // Run function to recalculate all Expenditures in Class
         }
@@ -97,6 +105,11 @@ namespace Budgeter
         {
             ListBoxExpenditure.Items.Add(new Expenditure(itemName, ((int)itemValue)));
             OutgoingFunds.Add(itemValue);
+        }
+
+        void Calculate_GrandTotal(int grandTotal)
+        {
+            GrandTotal.Text = grandTotal.ToString();
         }
 
 

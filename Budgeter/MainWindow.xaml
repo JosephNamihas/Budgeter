@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Budgeter"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FF4BB8C7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
@@ -25,13 +25,14 @@
 
         <TextBox x:Name="IncomeName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" Width="100"/>
         <TextBox x:Name="IncomeAmount" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" />
-        <Button Click="IncomeButton_Click" Grid.Column="1" Grid.Row="1" Content="Add Income" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" />
+        <Button Click="IncomeButton_Click" Grid.Column="1" Grid.Row="1" Content="Add Income" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" />
         <Button Click="ClearButton_Click" Grid.Column="1" Grid.Row="1" Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
 
         <TextBox x:Name="ExpenditureName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25" Width="100" />
         <TextBox x:Name ="ExpenditureAmount" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="50" />
-        <Button Click="ExpenditureButton_Click" Grid.Column="1" Grid.Row="2" Content="Add Expenditure" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
+        <Button Click="ExpenditureButton_Click" Grid.Column="1" Grid.Row="2" Content="Add Expenditure" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"/>
 
+        <Label Content="Cash Flow" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" />
         <ListBox x:Name="ListBoxIncome" Grid.Column="2" Grid.Row="1" Background="#FFCEC4C4">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -58,8 +59,25 @@
         <Label Content="Total Expenditure:" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" />
         <Label Content="Grand Total:" Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
         <TextBlock x:Name="TotalExpenditure" Grid.Column="2" Grid.Row="3" Text="" Width="100" VerticalAlignment="Center" />
-        <TextBlock x:Name="TotalIncome" Grid.Column="2" Grid.Row="3" Text="" Width="100" Margin="10" />
-        <TextBlock x:Name="GrandTotal" Grid.Column="2" Grid.Row="3" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="TotalIncome" Grid.Column="2" Grid.Row="3" Text="" Width="100" Margin="10" FontWeight="Bold" />
+        <TextBlock x:Name="GrandTotal" Grid.Column="2" Grid.Row="3" Text="" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" />
+        <Label Grid.Column="1" Content="Income:" HorizontalAlignment="Left" Margin="75,21,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491"/>
+        <Label Grid.Column="1" Content="Amount:" HorizontalAlignment="Left" Margin="92,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <Label Grid.Column="1" Content="Expenditure:" HorizontalAlignment="Left" Margin="51,21,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Grid.Column="1" Content="Amount:" HorizontalAlignment="Left" Margin="92,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <DatePicker Grid.Column="0" Grid.Row="0" />
+            <ListBoxItem Grid.Column="1" Grid.Row="0" />
+
+        </Grid>
 
     </Grid>
 </Window>
