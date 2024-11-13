@@ -36,7 +36,7 @@ namespace Budgeter
         {
             string incomeItem = IncomeName.Text; // The UI Element
             int incomeVal = 0; // The value, the user inputs in IncomeAmount.Text
-             // The sum of the income
+            int incomeTotal = 0;// The sum of the income
            
 
             try
@@ -59,6 +59,7 @@ namespace Budgeter
             }
 
             TotalIncome.Text = incomeTotal.ToString();
+            CalculateGrandTotal(incomeTotal, expenTotal);
 
         }
 
@@ -89,6 +90,7 @@ namespace Budgeter
             }
 
             TotalExpenditure.Text = expenTotal.ToString();
+            CalculateGrandTotal(incomeTotal, expenTotal);
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -109,6 +111,24 @@ namespace Budgeter
         {
             ListBoxExpenditure.Items.Add(new Expenditure(itemName, ((int)itemValue)));
             OutgoingFunds.Add(itemValue);
+        }
+
+        void CalculateGrandTotal(int incomeTotal, int expenTotal)
+        {
+            grandTotal = 0;
+
+            foreach(int item in IncomingFunds)
+            {
+                grandTotal += item;
+            }
+
+            foreach(int item in OutgoingFunds)
+            {
+                grandTotal -= item;
+            }
+
+            GrandTotal.Text = grandTotal.ToString();
+
         }
 
     }
