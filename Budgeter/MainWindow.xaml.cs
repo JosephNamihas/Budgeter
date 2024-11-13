@@ -95,8 +95,8 @@ namespace Budgeter
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-           
-
+                IncomingFunds.Clear();
+                ListBoxIncome.Items.Clear();
         }
          // -------------------------------------------------- METHODS ------------------------------------------- //
 
